@@ -1,4 +1,4 @@
-package com.example.streamvideoapp;
+package com.jemi.streamvideoapp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
