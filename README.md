@@ -11,7 +11,7 @@ Features
 
 3. Pack camera stream into RTP packets
 
-4. Receiver remote video RTP packets
+4. Receive remote video RTP packets
 
 
 5. Display remote video stream
