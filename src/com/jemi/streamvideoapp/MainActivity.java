@@ -1,3 +1,6 @@
+/*
+Copyright (c) 2012 Lucas Tseng. All Rights Reserved.
+*/
 package com.jemi.streamvideoapp;
 
 import java.io.ByteArrayOutputStream;
@@ -130,90 +133,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
 	        server.close();
 	    }
 	}
-	/*
-	public class VideoServer extends Thread
-	{
-		final static int SERVER_PORT	= 8080;
-		
-		private DatagramSocket server;
-		private boolean isRunning;
-		
-		public VideoServer()
-		{
-			try
-			{
-	        	server = new DatagramSocket(SERVER_PORT, InetAddress.getByName(getIPAddress(true)));
-	        }
-			catch (java.io.IOException e)
-			{
-	        	Log.e(TAG, "IOException:" + e.toString());
-	        }
-		}
-		
-		public void run()
-		{
-			int imagenb = 0;
-			byte[] dataBuf = new byte[15000];
-			
-			DatagramPacket packet = new DatagramPacket(dataBuf, dataBuf.length);
-			try {
-				server.receive(packet);
-			} catch (IOException e1) {
-				Log.e(TAG, "VideoServer start failed");
-				return;
-			}
-			InetAddress ipAddr = packet.getAddress();
-			int port = packet.getPort();
-			isRunning = true;
-			
-			while (isRunning)
-			{
-				boolean empty = false;
-				byte[] data = null;
-				
-				synchronized(outputBuffer)
-				{
-					if (outputBuffer.size() == 0)
-					{
-						empty = true;
-					}
-					else
-						data = outputBuffer.remove(0);
-				}
-				if (empty)
-				{
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					continue;
-				}
-				
-				try
-				{
-					RTPpacket rtp_packet = new RTPpacket(MJPEG_TYPE, imagenb, imagenb*FRAME_PERIOD, 
-							data, data.length);
-					  
-					// get to total length of the full rtp packet to send
-					int packet_length = rtp_packet.getlength();
-
-					//retrieve the packet bitstream and store it in an array of bytes
-					byte[] packet_bits = new byte[packet_length];
-					rtp_packet.getpacket(packet_bits);
-
-					//send the packet as a DatagramPacket over the UDP socket 
-					DatagramPacket senddp = new DatagramPacket(packet_bits, packet_length, ipAddr, port);
-					server.send(senddp);
-				} catch (IOException e) {
-					Log.e(TAG, "sock error");
-					isRunning = false;
-				}
-			}
-		}
-	}
-	*/
+	
 	public class Transmitter extends Thread
 	{
 		String ip;
