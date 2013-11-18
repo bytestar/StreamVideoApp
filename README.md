@@ -1,4 +1,4 @@
-StreamVideoApp
+StreamVideoApp - Android
 ==============
 Streaming video by MJPEG over RTP to a remote android device
 and Display remote video streaming
